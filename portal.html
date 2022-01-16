@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+  <title>Portal</title>
+
+<body>
+  <!--NAV BAR-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Image and text -->
+      <nav class="navbar navbar-dark bg-dark">
+        <img src="pluto.svg" width="100" height="100" class="d-inline-block align-center" alt="">
+        <a class="navbar-brand text-warning m-3" href="#">
+          Pluto ServiceDesk
+        </a>
+      </nav>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="portal.html">Portal</a>
+          </li>
+          <li class="nav-item logged-in">
+            <a class="nav-link" href="#">Account</a>
+          </li>
+          <li class="nav-item logged-in">
+            <a class="nav-link" data-toggle="modal" data-target="#modal-writeATicket" href="#">Write a ticket</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="faq.html">FAQ</a>
+          </li>
+        </ul>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--MODAL Write a ticket-->
+  <div class="modal fade" id="modal-writeATicket" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="writeATicket">Write a ticket</h5>
+        </div>
+        <!--Modal Body start-->
+        <div class="modal-body">
+          <container>
+            <div class="m-5">
+              <h2>
+                <p>Submit a request:</p>
+              </h2>
+              <h6>
+                <p>We will try our best to help you as soon as possible.</p>
+                <p>Please have patience - we respond to all tickets as soon as possible, on a first come, first serve
+                  basis.
+                </p>
+              </h6>
+            </div>
+            <form class="was-validated m-5" id="addTicket">
+              <div class="input-group mb-3" id="ticket-form">
+                <input type="text" class="form-control" placeholder="Username" aria-label="Recipient's username"
+                  aria-describedby="basic-addon2" id="valueDomain">
+                <span class="input-group-text" id="basic-addon2">@domain.com</span>
+              </div>
+              <div class="mb-3">
+                <select class="form-select" required aria-label="select example" id="valueProblem">
+                  <option value="">What can we help you with?</option>
+                  <option>Bug report</option>
+                  <option>Hardware issues</option>
+                  <option>New joiner equipment</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Ticket Info:</label>
+                <textarea class="form-control is-invalid" id="validationTextarea"
+                  placeholder="Required filling up the ticket" required></textarea>
+                <div id="ticketHelp" class="form-text">Please give us details about your situation!</div>
+              </div>
+              <div class="mb-3">
+                <select class="form-select" required aria-label="select example" id="valueCity">
+                  <option value="">City</option>
+                  <option>Bucharest</option>
+                  <option>Cluj</option>
+                  <option>Iasi</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <select class="form-select" required aria-label="select example" id="valueDepartament">
+                  <option value="">Departament</option>
+                  <option>Sales</option>
+                  <option>HR</option>
+                  <option>PR</option>
+                  <option>Legal</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                  <label class="form-check-label" for="invalidCheck">
+                    I have read the FAQ section and I haven't found the solution!
+                  </label>
+                  <div class="invalid-feedback">
+                    You must agree before submitting.
+                  </div>
+                </div>
+              </div>
+        </div>
+        <!--Modal Body finish-->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          </container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center m-5">
+    <h2>Tickets</h2>
+  </div>
+
+  <!-- Tickete Portal -->
+  <div>
+    <table id="tickets-table" class="table table-striped">
+      <thead class="thead">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Username</th>
+          <th scope="col">Situation</th>
+          <th scope="col">Ticket info</th>
+          <th scope="col">City</th>
+          <th scope="col">Departament</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody class="tbody">
+      </tbody>
+    </table>
+  </div>
+
+  <div><span>No. of Tickets: </span><span id='ticket-counter'></span></div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="portal.js"></script>
+
+</body>
+
+</html>
